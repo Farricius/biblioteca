@@ -72,6 +72,7 @@ public class Main {
 	private static String leerCadenas() {
 		String opcionPalabras = null;
 		Scanner teclado = new Scanner(System.in);
+		//while ()
 		try {
 			opcionPalabras = teclado.next();
 		} catch (InputMismatchException e) {
