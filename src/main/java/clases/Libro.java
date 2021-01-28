@@ -8,6 +8,21 @@ public class Libro {
 	private String autor;
 	private Integer paginas;
 	
+	//DECLARAC. MÉTODO CONSTRUCTOR
+	
+	public Libro() {
+		
+	}
+	
+	public Libro (String titulo, String isbn, Genero genero, String autor, Integer paginas) {
+		super();
+		this.titulo = titulo;
+		this.isbn = isbn;
+		this.genero = genero;
+		this.autor = autor;
+		this.paginas = paginas;
+	}
+	
 	/**
 	 * @return the titulo
 	 */
@@ -78,8 +93,4 @@ public class Libro {
 		this.paginas = paginas;
 	}
 
-	public Libro() {
-		
-	}
-	
 }
