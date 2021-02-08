@@ -27,6 +27,10 @@ public class Main {
 				listadoLibros(catalogo);
 				
 				break;
+			
+			case 3:
+				bajaLibros(catalogo);
+				
 			default:
 				break;
 			}
@@ -43,7 +47,7 @@ public class Main {
 			System.out.println("3. Baja de Libros");
 			System.out.println("4. Búsqueda de Libros");
 			System.out.println("5. Ordenacion de Libros");
-			System.out.println("Introduce la opcion:");
+			System.out.print("Introduce la opcion: ");
 
 			opcion = leerOpcion(5); //param. int max
 
@@ -121,18 +125,60 @@ public class Main {
 	}
 	
 	private static void listadoLibros (ArrayList<Libro> catalogo) {
-		String xd = catalogo.toString();
-		int counter = 1;
+		System.out.println("h");
+		//String letras = catalogo.toString();
 		for (int i = 0; i < catalogo.size(); i++) {
-			  System.out.println("Libro nº: " + counter);
+			  System.out.println("*****");
+			  System.out.println("Libro en posición nº: " + (i)); //i starts 0 
 			  System.out.println("Título: " + catalogo.get(i).getTitulo());
 			  System.out.println("ISBN: " + catalogo.get(i).getIsbn());
 			  System.out.println("Género: " + catalogo.get(i).getGenero());
 			  System.out.println("Autor: " + catalogo.get(i).getAutor());
 			  System.out.println("Nº Pág: " + catalogo.get(i).getPaginas());
-			  System.out.println("-----");
-			  counter++;
+			  System.out.println("*****");
 		    }
-	}
-	
-}
+	}		
+//		ALTERNATIVE FOR-EACH --- Más breve
+//		for (Libro l : catalogo) {
+//			System.out.println(l);
+//		}
+
+		private static void bajaLibros (ArrayList <Libro> catalogo) {
+			
+			System.out.println("Introduzca posición del libro a eliminar: " );
+			int opcion;
+			int ultimoElemento = catalogo.size() - 1;
+			
+			try {
+				Scanner teclado = new Scanner(System.in);
+				opcion = teclado.nextInt();
+				catalogo.remove(opcion);
+				
+				if (opcion == catalogo.size()) {
+					System.out.println("¡Borraste tu libro más nuevo!");
+					//catalogo.remove(ultimoElemento);
+					catalogo.remove(catalogo.size()-1);
+				}
+				
+				System.out.println("Libro borrado: " + catalogo.get(opcion).getTitulo());
+				
+//				if (opcion > catalogo.size())
+//					opcion = -1; //Vuelta al switch x
+			} catch (InputMismatchException e) {
+				System.out.println("Opción no válida/numérica, volviendo al menú.");
+			}
+				//pepito:288:novela:fran:300
+			
+				//clients.remove(clients.size() - 1);
+				
+				
+		}
+			
+			
+			
+} //rip 
+			
+			
+			
+			
+			
