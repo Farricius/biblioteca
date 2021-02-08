@@ -30,6 +30,11 @@ public class Main {
 			
 			case 3:
 				bajaLibros(catalogo);
+				break;
+				
+			case 4:
+				busquedaLibros(catalogo);
+				break;
 				
 			default:
 				break;
@@ -125,7 +130,7 @@ public class Main {
 	}
 	
 	private static void listadoLibros (ArrayList<Libro> catalogo) {
-		System.out.println("h");
+		System.out.println("---");
 		//String letras = catalogo.toString();
 		for (int i = 0; i < catalogo.size(); i++) {
 			  System.out.println("*****");
@@ -145,40 +150,56 @@ public class Main {
 
 		private static void bajaLibros (ArrayList <Libro> catalogo) {
 			
-			System.out.println("Introduzca posición del libro a eliminar: " );
-			int opcion;
-			int ultimoElemento = catalogo.size() - 1;
-			
-			try {
-				Scanner teclado = new Scanner(System.in);
-				opcion = teclado.nextInt();
-				catalogo.remove(opcion);
-				
-				if (opcion == catalogo.size()) {
-					System.out.println("¡Borraste tu libro más nuevo!");
-					//catalogo.remove(ultimoElemento);
-					catalogo.remove(catalogo.size()-1);
-				}
-				
-				System.out.println("Libro borrado: " + catalogo.get(opcion).getTitulo());
-				
-//				if (opcion > catalogo.size())
-//					opcion = -1; //Vuelta al switch x
-			} catch (InputMismatchException e) {
-				System.out.println("Opción no válida/numérica, volviendo al menú.");
-			}
+		        Scanner teclado = new Scanner(System.in);
+		        System.out.println("¿Cual libro quieres borrar?");
+		        int opcion = teclado.nextInt();
+		        System.out.println("Libro borrado: " + catalogo.get(opcion).getTitulo());
+		        catalogo.remove(opcion);      
+		    }
 				//pepito:288:novela:fran:300
 			
 				//clients.remove(clients.size() - 1);
 				
-				
-		}
+				private static void busquedaLibros(ArrayList<Libro> catalogo) {
+					
+					Scanner teclado = new Scanner(System.in);
+					System.out.print("Búsqueda automática--, introduzca el ISBN: ");
+					String isbn_deseado = teclado.next();
+					
+					for (Libro lib : catalogo) { //RECORRIDO FOR - EACH CON CONDICIONANTE
+						if (lib.getIsbn().equalsIgnoreCase(isbn_deseado)) {
+							System.out.println("*** ¡El libro sí está disponible! Título: " + lib.getTitulo());
+						}
+							else {
+								System.out.println("Libro no disponible...");
+							}
+						}
+					}
+
+			} // RIP BODY
 			
-			
-			
-} //rip 
-			
-			
-			
-			
+		
+//		System.out.println("Introduzca posición del libro a eliminar: " );
+//		int opcion;
+//		int ultimoElemento = catalogo.size() - 1;
+//		
+//		try {
+//			Scanner teclado = new Scanner(System.in);
+//			opcion = teclado.nextInt();
+//			catalogo.remove(opcion);
+//			
+//			if (opcion == catalogo.size()) {
+//				System.out.println("¡Borraste tu libro más nuevo!");
+//				//catalogo.remove(ultimoElemento);
+//				catalogo.remove(catalogo.size()-1);
+//			}
+//			
+//			System.out.println("Libro borrado: " + catalogo.get(opcion).getTitulo());
+//			
+////			if (opcion > catalogo.size())
+////				opcion = -1; //Vuelta al switch x
+//		} catch (InputMismatchException e) {
+//			System.out.println("Opción no válida/numérica, volviendo al menú.");
+//		}
+//	}
 			
