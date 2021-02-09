@@ -92,5 +92,20 @@ public class Libro {
 	public final void setPaginas(Integer paginas) {
 		this.paginas = paginas;
 	}
-
+	
+	public boolean equals (Object o) {
+		if (this == o) {
+			return true;
+		}
+		else {
+			
+		}
+		return true;
+		
+	}
 }
+
+//if (a instanceof int[] && b instanceof int[]) { // +Sysos con prueba
+//
+//	// Transform.
+//	int[] vectorA = (int[]) a;

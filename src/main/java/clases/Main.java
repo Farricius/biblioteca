@@ -12,7 +12,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		ArrayList<Libro> catalogo = new ArrayList<Libro>(); //Crea el catálogo como lista
+		ArrayList<Libro> catalogo = new ArrayList<Libro>(); // Crea el catálogo como lista
 
 		while (true) {
 			int opcion = menu();
@@ -25,17 +25,17 @@ public class Main {
 			case 2:
 				// TODO Lista de Libros
 				listadoLibros(catalogo);
-				
+
 				break;
-			
+
 			case 3:
 				bajaLibros(catalogo);
 				break;
-				
+
 			case 4:
 				busquedaLibros(catalogo);
 				break;
-				
+
 			default:
 				break;
 			}
@@ -54,7 +54,7 @@ public class Main {
 			System.out.println("5. Ordenacion de Libros");
 			System.out.print("Introduce la opcion: ");
 
-			opcion = leerOpcion(5); //param. int max
+			opcion = leerOpcion(5); // param. int max
 
 		} while (opcion <= 0);
 
@@ -84,7 +84,7 @@ public class Main {
 		// Crear el libro con los datos de la entrada
 		catalogo.add(libro);
 		// Meter el libro en el catalogo
-		
+
 	}
 
 	private static String obtenerDatosLibro() {
@@ -128,57 +128,86 @@ public class Main {
 		opcion = teclado.nextLine();
 		return opcion;
 	}
-	
-	private static void listadoLibros (ArrayList<Libro> catalogo) {
+
+	private static void listadoLibros(ArrayList<Libro> catalogo) {
 		System.out.println("---");
-		//String letras = catalogo.toString();
+		// String letras = catalogo.toString();
 		for (int i = 0; i < catalogo.size(); i++) {
-			  System.out.println("*****");
-			  System.out.println("Libro en posición nº: " + (i)); //i starts 0 
-			  System.out.println("Título: " + catalogo.get(i).getTitulo());
-			  System.out.println("ISBN: " + catalogo.get(i).getIsbn());
-			  System.out.println("Género: " + catalogo.get(i).getGenero());
-			  System.out.println("Autor: " + catalogo.get(i).getAutor());
-			  System.out.println("Nº Pág: " + catalogo.get(i).getPaginas());
-			  System.out.println("*****");
-		    }
-	}		
+			System.out.println("*****");
+			System.out.println("Libro en posición nº: " + (i)); // i starts 0
+			System.out.println("Título: " + catalogo.get(i).getTitulo());
+			System.out.println("ISBN: " + catalogo.get(i).getIsbn());
+			System.out.println("Género: " + catalogo.get(i).getGenero());
+			System.out.println("Autor: " + catalogo.get(i).getAutor());
+			System.out.println("Nº Pág: " + catalogo.get(i).getPaginas());
+			System.out.println("*****");
+		}
+	}
 //		ALTERNATIVE FOR-EACH --- Más breve
 //		for (Libro l : catalogo) {
 //			System.out.println(l);
 //		}
 
-		private static void bajaLibros (ArrayList <Libro> catalogo) {
-			
-		        Scanner teclado = new Scanner(System.in);
-		        System.out.println("¿Cual libro quieres borrar?");
-		        int opcion = teclado.nextInt();
-		        System.out.println("Libro borrado: " + catalogo.get(opcion).getTitulo());
-		        catalogo.remove(opcion);      
-		    }
-				//pepito:288:novela:fran:300
-			
-				//clients.remove(clients.size() - 1);
-				
-				private static void busquedaLibros(ArrayList<Libro> catalogo) {
-					
-					Scanner teclado = new Scanner(System.in);
-					System.out.print("Búsqueda automática--, introduzca el ISBN: ");
-					String isbn_deseado = teclado.next();
-					
-					for (Libro lib : catalogo) { //RECORRIDO FOR - EACH CON CONDICIONANTE
-						if (lib.getIsbn().equalsIgnoreCase(isbn_deseado)) {
-							System.out.println("*** ¡El libro sí está disponible! Título: " + lib.getTitulo());
-						}
-							else {
-								System.out.println("Libro no disponible...");
-							}
-						}
-					}
+	private static void bajaLibros(ArrayList<Libro> catalogo) {
 
-			} // RIP BODY
+		Scanner teclado = new Scanner(System.in);
+		System.out.println("¿Cuál libro quieres borrar?");
+		int opcion = teclado.nextInt();
+		System.out.println("Libro borrado: " + catalogo.get(opcion).getTitulo());
+		catalogo.remove(opcion);
+	}
+	// pepito:288:novela:fran:300
+
+	private static void busquedaLibros(ArrayList<Libro> catalogo) {
+
+		// IndexOf(Object) puede utilizarse aquí.
+		// Mostrar info.
+		
+		Scanner teclado = new Scanner(System.in);
+		System.out.print("-Búsqueda rápida-, introduzca el ISBN: ");
+		String isbn_deseado = teclado.nextLine();
+		
+		catalogo.indexOf();
+
+		//catalogo.indexOf(isbn_deseado);
+		int posicionConfirmada = catalogo.indexOf(isbn_deseado);
+
+		if (posicionConfirmada == -1) {
+			System.out.println("Libro no disponible");
+		}
+	}
 			
 		
+		
+			//System.out.println("Libro en posición nº: " + (posicionConfirmada)); // i starts 0
+//			System.out.println("Título: " + catalogo.(posicionConfirmada).getTitulo());
+//			System.out.println("ISBN: " + catalogo.get(posicionConfirmada).getIsbn());
+//			System.out.println("Género: " + catalogo.get(posicionConfirmada).getGenero());
+//			System.out.println("Autor: " + catalogo.get(posicionConfirmada).getAutor());
+//			System.out.println("Nº Pág: " + catalogo.get(posicionConfirmada).getPaginas());
+//			System.out.println("*****");
+
+//			for (Libro lib : catalogo) { // RECORRIDO FOR - EACH CON CONDICIONANTE al ISBN
+//			if (lib.getIsbn().equalsIgnoreCase(isbn_deseado)) {
+//				System.out.println("*** ¡El libro sí está disponible! Título: " + lib.getTitulo());
+//			} else {
+//				System.out.println("Libro no disponible...");
+//			}
+//	} RIP 
+
+	private static void ordenacion(ArrayList<Libro> catalogo) {
+		
+	//Pide al usuario si desea ordenar por título o por Número de Páginas
+	//Para ordenar por título alfabéticamente se debe usar el método sort de la Clase Collections por orden natural
+	//Para ordenar por número de Páginas se debe usar el método sort de Collections que recibe un comparator
+		
+	System.out.println("¿Desea ordenar por título o por páginas?");
+		
+		
+
+	}
+}
+
 //		System.out.println("Introduzca posición del libro a eliminar: " );
 //		int opcion;
 //		int ultimoElemento = catalogo.size() - 1;
@@ -202,4 +231,3 @@ public class Main {
 //			System.out.println("Opción no válida/numérica, volviendo al menú.");
 //		}
 //	}
-			
