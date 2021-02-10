@@ -1,20 +1,20 @@
 package clases;
 
 public class Libro {
-	
+
 	private String titulo;
 	private String isbn;
 	private Genero genero;
 	private String autor;
 	private Integer paginas;
-	
-	//DECLARAC. MÉTODO CONSTRUCTOR
-	
+
+	// DECLARAC. MÉTODO CONSTRUCTOR
+
 	public Libro() {
-		
+
 	}
-	
-	public Libro (String titulo, String isbn, Genero genero, String autor, Integer paginas) {
+
+	public Libro(String titulo, String isbn, Genero genero, String autor, Integer paginas) {
 		super();
 		this.titulo = titulo;
 		this.isbn = isbn;
@@ -22,7 +22,7 @@ public class Libro {
 		this.autor = autor;
 		this.paginas = paginas;
 	}
-	
+
 	/**
 	 * @return the titulo
 	 */
@@ -92,18 +92,34 @@ public class Libro {
 	public final void setPaginas(Integer paginas) {
 		this.paginas = paginas;
 	}
-	
-	public boolean equals (Object o) {
+
+	public boolean equals(Object o) {
+
+		Libro l = (Libro) o;
+		boolean b = false;
+
 		if (this == o) {
-			return true;
+			b = true;
+
+		} else {
+			if (this.isbn.equalsIgnoreCase(l.isbn)) {
+				b = true;
+			}
 		}
-		else {
-			
-		}
-		return true;
-		
+		return b;
 	}
 }
+//@Override
+//public boolean equals(Object obj) {
+//   if (!(obj instanceof Song))
+//        return false;
+//    if (obj == this)
+//        return true;
+//
+//    Song s= (Song) obj;
+//    return s.getTitle().equals(this.title);
+//	}
+//}
 
 //if (a instanceof int[] && b instanceof int[]) { // +Sysos con prueba
 //

@@ -4,6 +4,7 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -159,25 +160,30 @@ public class Main {
 	// pepito:288:novela:fran:300
 
 	private static void busquedaLibros(ArrayList<Libro> catalogo) {
+		
+		//Pregunta al usuario el ISBN
+		//Usa el método .indexOf de List para ver si está el Libro con el ISBN introducido
+		//Si está muestra todos los datos del libro
+		//Si no está muestra un mensaje diciendo que el libro no está en la lista
 
-		// IndexOf(Object) puede utilizarse aquí.
-		// Mostrar info.
 		
 		Scanner teclado = new Scanner(System.in);
 		System.out.print("-Búsqueda rápida-, introduzca el ISBN: ");
 		String isbn_deseado = teclado.nextLine();
 		
-		catalogo.indexOf();
-
-		//catalogo.indexOf(isbn_deseado);
+		catalogo.indexOf(isbn_deseado);		
 		int posicionConfirmada = catalogo.indexOf(isbn_deseado);
-
+		
+		//Disponible:
+		
+		
+		
+		
+		//No Disponible:
 		if (posicionConfirmada == -1) {
 			System.out.println("Libro no disponible");
 		}
 	}
-			
-		
 		
 			//System.out.println("Libro en posición nº: " + (posicionConfirmada)); // i starts 0
 //			System.out.println("Título: " + catalogo.(posicionConfirmada).getTitulo());
@@ -200,9 +206,11 @@ public class Main {
 	//Pide al usuario si desea ordenar por título o por Número de Páginas
 	//Para ordenar por título alfabéticamente se debe usar el método sort de la Clase Collections por orden natural
 	//Para ordenar por número de Páginas se debe usar el método sort de Collections que recibe un comparator
-		
+	
+		//If decision
 	System.out.println("¿Desea ordenar por título o por páginas?");
-		
+	
+	Collections.sort(catalogo);
 		
 
 	}
