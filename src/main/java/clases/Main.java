@@ -39,6 +39,10 @@ public class Main {
 			case 4:
 				busquedaLibros(catalogo);
 				break;
+				
+			case 5:
+				ordenacion(catalogo);
+				break;
 
 			default:
 				break;
@@ -190,63 +194,29 @@ public class Main {
 		}
 		else {
 		//	String name = catalogo.get(posicion);
-			System.out.println("El libro es: " + (catalogo.get(posicion)));
+			System.out.println("\n El libro es: " + (catalogo.get(posicion)));
 		}
 	}
-		
-		
-//			System.out.println("Libro en posición nº: " + (posicionConfirmada)); // i starts 0
-//			System.out.println("Título: " + catalogo.(posicionConfirmada).getTitulo());
-//			System.out.println("ISBN: " + catalogo.get(posicionConfirmada).getIsbn());
-//			System.out.println("Género: " + catalogo.get(posicionConfirmada).getGenero());
-//			System.out.println("Autor: " + catalogo.get(posicionConfirmada).getAutor());
-//			System.out.println("Nº Pág: " + catalogo.get(posicionConfirmada).getPaginas());
-//			System.out.println("*****");
-
-//			for (Libro lib : catalogo) { // RECORRIDO FOR - EACH CON CONDICIONANTE al ISBN
-//			if (lib.getIsbn().equalsIgnoreCase(isbn_deseado)) {
-//				System.out.println("*** ¡El libro sí está disponible! Título: " + lib.getTitulo());
-//			} else {
-//				System.out.println("Libro no disponible...");
-//			}
-//	} RIP 
 
 	private static void ordenacion(ArrayList<Libro> catalogo) {
 		
 	//Pide al usuario si desea ordenar por título o por Número de Páginas
-	//Para ordenar por título alfabéticamente se debe usar el método sort de la Clase Collections por orden natural
+	System.out.println("¿ Desea ordenar por título (T) o páginas (P) ?");
+	
+		
+	//Para ordenar por título A-Z se debe usar el método sort Collections por orden natural
+	
+	Collections.sort(catalogo);
+	
+	for (Libro l : catalogo) {
+	System.out.println(" ");
+	System.out.println(l);
+	}
+		
 	//Para ordenar por número de Páginas se debe usar el método sort de Collections que recibe un comparator
 	
-	//If decision
-		
-	System.out.println("¿Desea ordenar por título o por páginas?");
 	
-	//Collections.sort(catalogo);
 		
 
 	}
 }
-
-//		System.out.println("Introduzca posición del libro a eliminar: " );
-//		int opcion;
-//		int ultimoElemento = catalogo.size() - 1;
-//		
-//		try {
-//			Scanner teclado = new Scanner(System.in);
-//			opcion = teclado.nextInt();
-//			catalogo.remove(opcion);
-//			
-//			if (opcion == catalogo.size()) {
-//				System.out.println("¡Borraste tu libro más nuevo!");
-//				//catalogo.remove(ultimoElemento);
-//				catalogo.remove(catalogo.size()-1);
-//			}
-//			
-//			System.out.println("Libro borrado: " + catalogo.get(opcion).getTitulo());
-//			
-////			if (opcion > catalogo.size())
-////				opcion = -1; //Vuelta al switch x
-//		} catch (InputMismatchException e) {
-//			System.out.println("Opción no válida/numérica, volviendo al menú.");
-//		}
-//	}

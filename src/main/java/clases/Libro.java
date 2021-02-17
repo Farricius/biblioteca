@@ -1,6 +1,6 @@
 package clases;
 
-public class Libro {
+public class Libro implements Comparable<Libro> {
 
 	private String titulo;
 	private String isbn;
@@ -108,7 +108,37 @@ public class Libro {
 		}
 		return b;
 	}
+
+@Override
+public String toString() {
+    String retorno;
+    retorno = "Titulo: " + titulo + "\n";
+    retorno = retorno + "isbn: " + isbn+ "\n";
+    retorno = retorno + "Genero: " + genero+ "\n";
+    retorno = retorno + "Autor: " + autor+ "\n";
+    retorno = retorno + "Paginas: " + paginas;
+    return retorno;
+	}
+
+	@Override
+	public int compareTo(Libro a) {
+		return titulo.compareTo(a.getTitulo());
+	}
 }
+		
+//		if () {
+//			return -1;
+//		} else if () {
+//			return 0;
+//		} else {
+//			return 1;
+//		}
+//	}
+//}
+
+
+
+
 //@Override
 //public boolean equals(Object obj) {
 //   if (!(obj instanceof Song))
