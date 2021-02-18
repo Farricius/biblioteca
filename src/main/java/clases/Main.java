@@ -280,22 +280,48 @@ public class Main {
 
 	private static void cargarFichero(ArrayList<Libro> catalogo) {
 		// TODO
-		 try {
-		    String xd = "kkk";
-			File myObj = new File(xd);
-		      Scanner myReader = new Scanner(myObj);
-		      while (myReader.hasNextLine()) {
-		        String data = myReader.nextLine();
-		        System.out.println(data);
-		      }
-		      myReader.close();
-		    } catch (FileNotFoundException e) {
-		      System.out.println("An error occurred.");
-		      e.printStackTrace();
-		    }
-		  }
 
-		//return libro;
+		Libro libro = null;
+
+		try {
+
+			System.out.println("Introduzca el nombre del archivo a leer");
+			Scanner teclado = new Scanner(System.in);
+			String answer = teclado.next(); // Archivo blas, cambiar a input del usuario
+
+			File myObj = new File(answer);//
+			Scanner myReader = new Scanner(myObj);//
+
+			System.out.println("El FICHERO HA SIDO CARGADO");
+
+			while (myReader.hasNextLine()) {
+
+				// System.out.println(myObj);
+
+				String line = myReader.next();
+				String[] datos = line.split(",");
+
+				String titulo = datos[0];
+				String isbn = datos[1];
+				Genero genero = Genero.getGenero(datos[2]);
+				String autor = datos[3];
+				Integer paginas = Integer.parseInt(datos[4]);
+
+				libro = new Libro(titulo, isbn, genero, autor, paginas);
+				catalogo.add(libro);
+
+				// EL PRIMER LIBRO NO SE IMPRIME --- ARREGLAR
+				while (myReader.hasNextLine()) {
+					String data = myReader.nextLine();
+					System.out.println(data);
+				}
+			}
+			myReader.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error del programa, vuelva al menú.");
+			e.printStackTrace();
+		}
+	}
 
 	private static void deleteCatalogo(ArrayList<Libro> catalogo) {
 		catalogo.clear();

@@ -124,7 +124,7 @@ public String toString() {
 
 	@Override
 	public int compareTo(Libro a) {
-		return titulo.compareTo(a.getTitulo());
+		return titulo.compareToIgnoreCase(a.getTitulo());
 	}
 }
 	
