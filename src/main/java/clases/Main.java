@@ -21,7 +21,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		ArrayList<Libro> catalogo = new ArrayList<Libro>(); // Crea el catálogo como lista
+		ArrayList<Libro> catalogo = new ArrayList<Libro>(10); // Crea el catálogo como lista
 
 		while (true) {
 			int opcion = menu();
@@ -261,35 +261,41 @@ public class Main {
 			String nombreFichero = teclado.next();
 
 			FileWriter Escritor = new FileWriter(nombreFichero);
-				
-				//titulo,isbn,genero,autor,num_paginas --- DEBO HACER UN SALTO DE LÍNEA, UNKNOWN
-				for (Libro l : catalogo) {
-				Escritor.write(l.getTitulo()+","+l.getIsbn()+","+l.getGenero()+","+l.getAutor()+","+l.getPaginas());
-				Escritor.write("\n");
-				}
-				Escritor.close();
 
-				System.out.println("Archivo rellenado! Se ha creado " + nombreFichero);
+			// titulo,isbn,genero,autor,num_paginas --- DEBO HACER UN SALTO DE LÍNEA,
+			// UNKNOWN
+			for (Libro l : catalogo) {
+				Escritor.write(l.getTitulo() + "," + l.getIsbn() + "," + l.getGenero() + "," + l.getAutor() + ","
+						+ l.getPaginas());
+				Escritor.write("\n");
 			}
-		 catch (IOException e) {
+			Escritor.close();
+
+			System.out.println("Archivo rellenado! Se ha creado " + nombreFichero);
+		} catch (IOException e) {
 			System.out.println("ERROR, NO PERMITIDO");
 			e.printStackTrace();
-		 }
+		}
 	}
-	
+
 	private static void cargarFichero(ArrayList<Libro> catalogo) {
 		// TODO
-	    File myObj = new File("filename.txt");
-	    if (myObj.exists()) {
-	      System.out.println("File name: " + myObj.getName());
-	      System.out.println("Absolute path: " + myObj.getAbsolutePath());
-	      System.out.println("Writeable: " + myObj.canWrite());
-	      System.out.println("Readable " + myObj.canRead());
-	      System.out.println("File size in bytes " + myObj.length());
-	    } else {
-	      System.out.println("The file does not exist.");
-	    }
-	  }
+		 try {
+		    String xd = "kkk";
+			File myObj = new File(xd);
+		      Scanner myReader = new Scanner(myObj);
+		      while (myReader.hasNextLine()) {
+		        String data = myReader.nextLine();
+		        System.out.println(data);
+		      }
+		      myReader.close();
+		    } catch (FileNotFoundException e) {
+		      System.out.println("An error occurred.");
+		      e.printStackTrace();
+		    }
+		  }
+
+		//return libro;
 
 	private static void deleteCatalogo(ArrayList<Libro> catalogo) {
 		catalogo.clear();
