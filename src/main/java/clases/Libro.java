@@ -1,5 +1,7 @@
 package clases;
 
+import java.util.Comparator;
+
 public class Libro implements Comparable<Libro> {
 
 	private String titulo;
@@ -125,6 +127,21 @@ public String toString() {
 		return titulo.compareTo(a.getTitulo());
 	}
 }
+	
+//	public static Comparator<Libro> xd = new Comparator<Libro>() {
+//	
+//		public int compare(Libro m1, Libro m2) {
+//			if(m1.getPaginas() == m1.getPaginas()){
+//				return 0;
+//			}
+//			if (m1.getPaginas() > m2.getPaginas())
+//				return -1;
+//			else
+//				return 1;
+//		}
+//	};
+//}
+
 		
 //		if () {
 //			return -1;
@@ -135,9 +152,6 @@ public String toString() {
 //		}
 //	}
 //}
-
-
-
 
 //@Override
 //public boolean equals(Object obj) {

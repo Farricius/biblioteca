@@ -8,6 +8,7 @@ package clases;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -187,36 +188,51 @@ public class Main {
 		int posicion = 0;
 		posicion = catalogo.indexOf(l);
 		
-		//Si está muestra todos los datos del libro
+		
 		//Si no está muestra un mensaje diciendo que el libro no está en la lista
 		if (posicion < 0) {
 			System.out.println("El libro no existe");
 		}
+		
+		//Si está muestra todos los datos del libro
 		else {
-		//	String name = catalogo.get(posicion);
 			System.out.println("\n El libro es: " + (catalogo.get(posicion)));
 		}
 	}
 
 	private static void ordenacion(ArrayList<Libro> catalogo) {
-		
-	//Pide al usuario si desea ordenar por título o por Número de Páginas
-	System.out.println("¿ Desea ordenar por título (T) o páginas (P) ?");
-	
-		
-	//Para ordenar por título A-Z se debe usar el método sort Collections por orden natural
-	
-	Collections.sort(catalogo);
-	
-	for (Libro l : catalogo) {
-	System.out.println(" ");
-	System.out.println(l);
-	}
-		
-	//Para ordenar por número de Páginas se debe usar el método sort de Collections que recibe un comparator
-	
-	
-		
 
+		// Pide al usuario si desea ordenar por título o por Número de Páginas
+		System.out.println("¿ Desea ordenar por título (T) o páginas (P) ?");
+		Scanner teclado = new Scanner(System.in);
+		String respuesta = teclado.next();
+
+		// Para ordenar por título A-Z se debe usar el método sort Collections od. natural
+		
+		if (respuesta.equalsIgnoreCase("T")) {
+
+			Collections.sort(catalogo);
+
+			for (Libro l : catalogo) {
+				System.out.println(" ");
+				System.out.println(l);
+			}
+		}
+
+		// Para ordenar por nº de Páginas, usamos el método sort de Collections que
+		// recibe un comparator
+
+		if (respuesta.equalsIgnoreCase("P")) {
+
+			Comparator<Libro> comparadorA = (uno, dos) -> uno.getPaginas().compareTo(dos.getPaginas());
+			catalogo.sort(comparadorA);
+
+			for (Libro l : catalogo) {
+				System.out.println(" ");
+				System.out.println(l);
+			}
+		}
 	}
 }
+
+//principito:288:NOVELA:Elias:250
