@@ -292,7 +292,7 @@ public class Main {
 			File myObj = new File(answer);//
 			Scanner myReader = new Scanner(myObj);//
 
-			System.out.println("El FICHERO HA SIDO CARGADO");
+			System.out.println("¡El FICHERO HA SIDO CARGADO!");
 
 			while (myReader.hasNextLine()) {
 
@@ -316,6 +316,7 @@ public class Main {
 					System.out.println(data);
 				}
 			}
+			
 			myReader.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("Error del programa, vuelva al menú.");
