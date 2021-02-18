@@ -6,6 +6,10 @@
 */
 package clases;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -40,9 +44,25 @@ public class Main {
 			case 4:
 				busquedaLibros(catalogo);
 				break;
-				
+
 			case 5:
 				ordenacion(catalogo);
+				break;
+
+			case 6:
+				try {
+					guardarFichero(catalogo);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				break;
+
+			case 7:
+				cargarFichero(catalogo);
+				break;
+
+			case 8:
+				deleteCatalogo(catalogo);
 				break;
 
 			default:
@@ -65,7 +85,7 @@ public class Main {
 			System.out.println("6. Guardar hacia fichero");
 			System.out.println("7. Cargar desde fichero");
 			System.out.println("8. Limpiar catálogo");
-			
+
 			System.out.print(">>> Introduzca la opcion: ");
 
 			opcion = leerOpcion(8); // param. int max
@@ -93,10 +113,10 @@ public class Main {
 		// Leer de la entrada
 		String datosLibro = obtenerDatosLibro();
 		// titulo:isbn:genero:autor:paginas
-		
+
 		// Procesar la entrada y crear el libro con los datos de la entrada
 		Libro libro = procesaEntrada(datosLibro);
-		
+
 		catalogo.add(libro);
 		// Meter el libro en el catalogo
 
@@ -111,7 +131,7 @@ public class Main {
 			System.out.println("Usa el formato \"titulo:isbn:genero:autor:paginas\"");
 			try {
 				datos = leerCadena();
-				if (true) //Se añade supuestamente ya que es válido el libro
+				if (true) // Se añade supuestamente ya que es válido el libro
 					validado = true;
 			} catch (InputMismatchException e) {
 				System.out.println("Datos de entrada no válidos");
@@ -174,27 +194,27 @@ public class Main {
 	// pepito:288:novela:fran:300
 
 	private static void busquedaLibros(ArrayList<Libro> catalogo) {
-		
-		//Pregunta al usuario el ISBN
+
+		// Pregunta al usuario el ISBN
 		String isbn_deseado = "hola";
 		Scanner teclado = new Scanner(System.in);
 		System.out.print("-Búsqueda rápida-, introduzca el ISBN: ");
 		isbn_deseado = teclado.nextLine();
 
-		//Usa el método .indexOf de List para ver si está el Libro con el ISBN introducido
+		// Usa el método .indexOf de List para ver si está el Libro con el ISBN
+		// introducido
 		Libro l = new Libro();
 		l.setIsbn(isbn_deseado);
-		
+
 		int posicion = 0;
 		posicion = catalogo.indexOf(l);
-		
-		
-		//Si no está muestra un mensaje diciendo que el libro no está en la lista
+
+		// Si no está muestra un mensaje diciendo que el libro no está en la lista
 		if (posicion < 0) {
 			System.out.println("El libro no existe");
 		}
-		
-		//Si está muestra todos los datos del libro
+
+		// Si está muestra todos los datos del libro
 		else {
 			System.out.println("\n El libro es: " + (catalogo.get(posicion)));
 		}
@@ -207,8 +227,9 @@ public class Main {
 		Scanner teclado = new Scanner(System.in);
 		String respuesta = teclado.next();
 
-		// Para ordenar por título A-Z se debe usar el método sort Collections od. natural
-		
+		// Para ordenar por título A-Z se debe usar el método sort Collections od.
+		// natural
+
 		if (respuesta.equalsIgnoreCase("T")) {
 
 			Collections.sort(catalogo);
@@ -232,6 +253,47 @@ public class Main {
 				System.out.println(l);
 			}
 		}
+	}
+
+	private static void guardarFichero(ArrayList<Libro> catalogo) throws IOException {
+		try {
+			Scanner teclado = new Scanner(System.in);
+			String nombreFichero = teclado.next();
+
+			FileWriter Escritor = new FileWriter(nombreFichero);
+				
+				//titulo,isbn,genero,autor,num_paginas --- DEBO HACER UN SALTO DE LÍNEA, UNKNOWN
+				for (Libro l : catalogo) {
+				Escritor.write(l.getTitulo()+","+l.getIsbn()+","+l.getGenero()+","+l.getAutor()+","+l.getPaginas());
+				Escritor.write("\n");
+				}
+				Escritor.close();
+
+				System.out.println("Archivo rellenado! Se ha creado " + nombreFichero);
+			}
+		 catch (IOException e) {
+			System.out.println("ERROR, NO PERMITIDO");
+			e.printStackTrace();
+		 }
+	}
+	
+	private static void cargarFichero(ArrayList<Libro> catalogo) {
+		// TODO
+	    File myObj = new File("filename.txt");
+	    if (myObj.exists()) {
+	      System.out.println("File name: " + myObj.getName());
+	      System.out.println("Absolute path: " + myObj.getAbsolutePath());
+	      System.out.println("Writeable: " + myObj.canWrite());
+	      System.out.println("Readable " + myObj.canRead());
+	      System.out.println("File size in bytes " + myObj.length());
+	    } else {
+	      System.out.println("The file does not exist.");
+	    }
+	  }
+
+	private static void deleteCatalogo(ArrayList<Libro> catalogo) {
+		catalogo.clear();
+		System.out.println(">>> Catálogo REINICIADO!!! ");
 	}
 }
 
