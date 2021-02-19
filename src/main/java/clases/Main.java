@@ -288,7 +288,12 @@ public class Main {
 			System.out.println("Introduzca el nombre del archivo a leer");
 			Scanner teclado = new Scanner(System.in);
 			String answer = teclado.next(); // Archivo blas, cambiar a input del usuario
-
+			validatorDos (answer);
+			
+			if (validatorDos(answer) != true) {
+				System.out.println("¡No introduzca caracteres especiales!");
+			}
+				
 			File myObj = new File(answer);//
 			Scanner myReader = new Scanner(myObj);//
 
@@ -318,6 +323,7 @@ public class Main {
 			}
 			
 			myReader.close();
+			
 		} catch (FileNotFoundException e) {
 			System.out.println("Error del programa, vuelva al menú.");
 			e.printStackTrace();
@@ -327,6 +333,18 @@ public class Main {
 	private static void deleteCatalogo(ArrayList<Libro> catalogo) {
 		catalogo.clear();
 		System.out.println(">>> Catálogo REINICIADO!!! ");
+	}
+
+	
+	//1. Validación de la entrada por teclado, incompleto, solo planteado
+	private static boolean validatorUno(String valideHere) {
+		
+		return valideHere.matches(" ^[\\w-]:[\\w-]:(NOVELA|POESIA|FICCION):[\\w-]:[0-9]+([\\.,][0-9]+)?$] ");
+		
+	}
+	//2. Validación de la entrada por lectura en archivo.
+	private static boolean validatorDos(String valideHere) {
+		return valideHere.matches(" ^[^<>:;,?\"*|/]+$ ");
 	}
 }
 
