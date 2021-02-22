@@ -245,8 +245,8 @@ public class Main {
 
 		if (respuesta.equalsIgnoreCase("P")) {
 
-			Comparator<Libro> comparadorA = (uno, dos) -> uno.getPaginas().compareTo(dos.getPaginas());
-			catalogo.sort(comparadorA);
+//			Comparator<Libro> comparadorA = (uno, dos) -> uno.getPaginas().compareTo(dos.getPaginas());
+//			catalogo.sort(comparadorA);
 
 			for (Libro l : catalogo) {
 				System.out.println(" ");

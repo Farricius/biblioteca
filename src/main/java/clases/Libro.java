@@ -2,7 +2,7 @@ package clases;
 
 import java.util.Comparator;
 
-public class Libro implements Comparable<Libro> {
+public class Libro implements Comparable<Libro>, Comparator<Libro> {
 
 	private String titulo;
 	private String isbn;
@@ -125,6 +125,12 @@ public String toString() {
 	@Override
 	public int compareTo(Libro a) {
 		return titulo.compareToIgnoreCase(a.getTitulo());
+	}
+
+	@Override
+	public int compare(Libro arg0, Libro arg1) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
 	
