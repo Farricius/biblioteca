@@ -279,7 +279,6 @@ public class Main {
 	}
 
 	private static void cargarFichero(ArrayList<Libro> catalogo) {
-		// TODO
 
 		Libro libro = null;
 
@@ -291,7 +290,7 @@ public class Main {
 			validatorDos (answer);
 			
 			if (validatorDos(answer) != true) {
-				System.out.println("¡No introduzca caracteres especiales!");
+				System.out.println("¡No introduzca caracteres especiales!"); //Mejorar...
 			}
 				
 			File myObj = new File(answer);//
@@ -303,7 +302,7 @@ public class Main {
 
 				// System.out.println(myObj);
 
-				String line = myReader.next();
+				String line = myReader.nextLine();
 				String[] datos = line.split(",");
 
 				String titulo = datos[0];
@@ -314,12 +313,9 @@ public class Main {
 
 				libro = new Libro(titulo, isbn, genero, autor, paginas);
 				catalogo.add(libro);
-
-				// EL PRIMER LIBRO NO SE IMPRIME --- ARREGLAR
-				while (myReader.hasNextLine()) {
-					String data = myReader.nextLine();
-					System.out.println(data);
-				}
+			
+				//No mostrar nada más, usar el método (2) de mostrarCatalogo...
+				
 			}
 			
 			myReader.close();
