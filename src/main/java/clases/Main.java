@@ -246,11 +246,14 @@ public class Main {
 		if (respuesta.equalsIgnoreCase("P")) {
 
 //			Comparator<Libro> comparadorA = (uno, dos) -> uno.getPaginas().compareTo(dos.getPaginas());
-//			catalogo.sort(comparadorA);
+//			catalogo.sort(comparadorA); LAMBDA NO SE PUEDE AUN
+			
+			Collections.sort(catalogo, new Libro());
 
 			for (Libro l : catalogo) {
-				System.out.println(" ");
-				System.out.println(l);
+				System.out.println("jajajja");
+				System.out.println(l.getPaginas());
+				//System.out.println(l);
 			}
 		}
 	}
@@ -272,6 +275,7 @@ public class Main {
 			Escritor.close();
 
 			System.out.println("Archivo rellenado! Se ha creado " + nombreFichero);
+			
 		} catch (IOException e) {
 			System.out.println("ERROR, NO PERMITIDO");
 			e.printStackTrace();
