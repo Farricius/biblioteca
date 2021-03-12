@@ -1,3 +1,11 @@
+/**
+
+ * Enum de GENEROS aplicados a nuestro gestor de bibliotecas & libros.
+
+ * @author: JD Hernandez Farricius
+ * @version: 12/03/2021
+ */
+
 package clases;
 
 public enum Genero {

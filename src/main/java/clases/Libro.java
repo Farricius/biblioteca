@@ -1,11 +1,20 @@
+/**
+
+ * Constructor base, Constructor a Libro, Getters + Setters y métodos de equals, compare, compareTo 
+ * Todo es usado y necesario para la clase principal. 
+
+ * @author: JD Hernandez Farricius
+ * @version: 12/03/2021
+ */
+
 package clases;
 
 import java.util.Comparator;
 
 public class Libro implements Comparable<Libro>, Comparator<Libro> {
 
-	// Comparable corresponde a compareTo (Básico), Comparator corresponde a Compare
-	// (Avanzado, 2 objetos).
+	// Comparable corresponde a compareTo (Más "Básico"), Comparator corresponde al
+	// mét. Compare. (2 objects)
 
 	private String titulo;
 	private String isbn;
@@ -19,6 +28,18 @@ public class Libro implements Comparable<Libro>, Comparator<Libro> {
 
 	}
 
+	/**
+	 * 
+	 * Constructor para un libro individual a guardar en el Main
+	 * 
+	 * @param titulo  Para un nombre en palabras (String) de un libro
+	 * @param isbn    Para el código numérico/letras de un libro
+	 * @param genero  Según enum. habrá distintos tipos a asignar a este parámetro
+	 * @param autor   Nombre del escritor, texto cadena
+	 * @param paginas En caracter numéricos totales para una cantidad exacta
+	 * 
+	 */
+
 	public Libro(String titulo, String isbn, Genero genero, String autor, Integer paginas) {
 		super();
 		this.titulo = titulo;
@@ -29,74 +50,82 @@ public class Libro implements Comparable<Libro>, Comparator<Libro> {
 	}
 
 	/**
-	 * @return the titulo
+	 * @return titulo
 	 */
 	public final String getTitulo() {
 		return titulo;
 	}
 
 	/**
-	 * @param titulo the titulo to set
+	 * @param titulo (titulo puesto al param)
 	 */
 	public final void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 
 	/**
-	 * @return the isbn
+	 * @return isbn
 	 */
 	public final String getIsbn() {
 		return isbn;
 	}
 
 	/**
-	 * @param isbn the isbn to set
+	 * @param isbn (isbn puesto al param)
 	 */
 	public final void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 
 	/**
-	 * @return the genero
+	 * @return genero
 	 */
 	public final Genero getGenero() {
 		return genero;
 	}
 
 	/**
-	 * @param genero the genero to set
+	 * @param (gen. puesto al param - enum Genero.java)
 	 */
 	public final void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 
 	/**
-	 * @return the autor
+	 * @return autor
 	 */
 	public final String getAutor() {
 		return autor;
 	}
 
 	/**
-	 * @param autor the autor to set
+	 * @param (autor puesto al param)
 	 */
 	public final void setAutor(String autor) {
 		this.autor = autor;
 	}
 
 	/**
-	 * @return the paginas
+	 * @return paginas
 	 */
 	public final Integer getPaginas() {
 		return paginas;
 	}
 
 	/**
-	 * @param paginas the paginas to set
+	 * @param (paginas puesto al param)
 	 */
 	public final void setPaginas(Integer paginas) {
 		this.paginas = paginas;
 	}
+
+	/**
+	 * Método equals para comprobar si dos objetos son del mismo tipo y los mismos
+	 * datos. Las subclases pueden sobreescribir el método equals() parahacer una
+	 * comparación entre dos objetos.
+	 * 
+	 * @param object o es el objeto a pasarle, en este caso libros por casting.
+	 */
 
 	public boolean equals(Object o) {
 
@@ -114,6 +143,7 @@ public class Libro implements Comparable<Libro>, Comparator<Libro> {
 		return b;
 	}
 
+	// MÉTODO toString para pasar a texto directamente...
 	@Override
 	public String toString() {
 		String retorno;
@@ -126,13 +156,35 @@ public class Libro implements Comparable<Libro>, Comparator<Libro> {
 	}
 
 	@Override
+	/**
+	 * Realizar una ordenación natural en una cadena. Orden de clasificación que se
+	 * aplica al objeto, orden léxico para Cadena al retornar el Titulo en mi caso.
+	 * 
+	 * @param (Libros desde el catalogo)
+	 * @return libros ordenados ya
+	 */
+
 	public int compareTo(Libro libroOrdenar) {
 		return titulo.compareToIgnoreCase(libroOrdenar.getTitulo());
+
 		// return libroOrdenar.getTitulo().compareToIgnoreCase(this.titulo); al reves
 
 	}
 
 	@Override
+	/**
+	 * compara dos objetos para la ordenación Orden de clasificación que se aplica
+	 * al objeto, orden numérico ascendiendo al usar Integers.
+	 * 
+	 * @param (Libro1 y libro2 a comparar)
+	 * 
+	 *                Este método deberá de devolver un valor negativo si el primer
+	 *                argumento es menor que el segundo, un cero si los dos son
+	 *                iguales y un número positivo sin el primer elemento es mayor
+	 *                que el segundo.
+	 *
+	 * @return paginas ordenadas según resultado
+	 */
 	public int compare(Libro o1, Libro o2) {
 
 		return new Integer(o1.getPaginas()).compareTo(new Integer(o2.getPaginas()));
@@ -141,6 +193,8 @@ public class Libro implements Comparable<Libro>, Comparator<Libro> {
 
 	}
 }
+
+//APUNTES USADOS:
 
 //	ORDENACIÓN POR PÁGINAS (COMPARE)
 //	 @Override 
